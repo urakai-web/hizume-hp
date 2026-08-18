@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hizume-hp",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/worker/index.ts",
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "none"
+  },
+  "vars": {
+    "MICROCMS_SERVICE_DOMAIN": ""
+  }
+}

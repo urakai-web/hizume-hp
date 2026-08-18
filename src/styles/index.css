@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #3a2f26;
+  --color-brand-light: #8a7a68;
+  --color-sand: #fbf6ee;
+  --font-sans:
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", ui-sans-serif,
+    system-ui, sans-serif;
+}
+
+body {
+  font-feature-settings: "palt";
+  font-family: var(--font-sans);
+}
