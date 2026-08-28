@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { cases } from "../../data/cases";
+import { useCases } from "../../hooks/useCases";
 import { useFadeIn } from "../../hooks/useFadeIn";
 
 const GAP = 24;
-const featured = cases.slice(0, 6);
 
 export default function WorksTeaser() {
   const sectionRef = useFadeIn<HTMLDivElement>();
+  const { cases } = useCases();
+  const featured = cases.slice(0, 6);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);

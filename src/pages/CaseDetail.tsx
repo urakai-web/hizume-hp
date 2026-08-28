@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-import { cases } from "../data/cases";
+import { useCases } from "../hooks/useCases";
 import { useFadeIn } from "../hooks/useFadeIn";
 
 export default function CaseDetail() {
   const { id } = useParams();
+  const { cases } = useCases();
   const item = cases.find((c) => c.id === id);
   const ref = useFadeIn<HTMLDivElement>();
 
@@ -37,11 +38,41 @@ export default function CaseDetail() {
             ))}
           </div>
           <h1 className="text-2xl md:text-3xl font-serif font-light text-gray-800">{item.title}</h1>
-          <p className="mt-2 text-sm text-gray-500">参考価格　{item.priceRange}</p>
+          <p className="mt-2 text-sm text-gray-500">
+            {[item.location, item.priceRange && `参考価格　${item.priceRange}`]
+              .filter(Boolean)
+              .join(" ・ ")}
+          </p>
 
           <div className="mt-10 aspect-[16/10] overflow-hidden">
             <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
           </div>
+
+          {item.body ? (
+            <div
+              className="prose prose-sm mt-10 max-w-none text-sm leading-relaxed text-gray-600"
+              dangerouslySetInnerHTML={{ __html: item.body }}
+            />
+          ) : null}
+
+          {item.gallery.length > 0 ? (
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {item.gallery.map((photo, index) => (
+                <figure key={index}>
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={photo.image}
+                      alt={photo.caption ?? item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {photo.caption ? (
+                    <figcaption className="mt-2 text-xs text-gray-400">{photo.caption}</figcaption>
+                  ) : null}
+                </figure>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

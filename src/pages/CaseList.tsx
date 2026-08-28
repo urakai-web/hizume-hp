@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
-import { cases } from "../data/cases";
+import { useCases } from "../hooks/useCases";
 import { useFadeIn } from "../hooks/useFadeIn";
 
 export default function CaseList() {
   const ref = useFadeIn<HTMLDivElement>();
+  const { cases } = useCases();
 
   return (
     <>
