@@ -1,50 +1,51 @@
-import type { EventItem } from "../lib/types";
+import { Link, useParams } from "react-router-dom";
+import { events } from "../data/events";
+import { useFadeIn } from "../hooks/useFadeIn";
 
-export type EventDetailProps = {
-  item: EventItem | null;
-};
+export default function EventDetail() {
+  const { id } = useParams();
+  const item = events.find((e) => e.id === id);
+  const ref = useFadeIn<HTMLDivElement>();
 
-function formatDateRange(startAt: string, endAt?: string) {
-  const start = new Date(startAt).toLocaleDateString("ja-JP");
-  if (!endAt) return start;
-  return `${start} 〜 ${new Date(endAt).toLocaleDateString("ja-JP")}`;
-}
-
-export function EventDetail({ item }: EventDetailProps) {
   if (!item) {
     return (
-      <div className="mx-auto max-w-3xl px-6 py-16">
-        <p className="text-sm text-brand-light">お探しのイベントは見つかりませんでした。</p>
-        <a href="/events" className="mt-4 inline-block text-sm text-brand hover:underline">
-          ← イベント一覧へ戻る
-        </a>
-      </div>
+      <section className="pt-40 pb-24 px-6 text-center">
+        <p className="text-sm text-gray-500">お探しのイベントは見つかりませんでした。</p>
+        <Link to="/events" className="btn-outline mt-8 inline-block text-xs">
+          イベント一覧へ戻る
+        </Link>
+      </section>
     );
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <a href="/events" className="text-sm text-brand-light hover:text-brand">
-        ← イベント一覧へ戻る
-      </a>
-      {item.reservationRequired ? (
-        <p className="mt-4 text-xs text-brand-light">予約必要です</p>
-      ) : null}
-      <h1 className="mt-1 text-2xl font-semibold text-brand">{item.title}</h1>
-      <p className="mt-4 text-sm text-brand-light">
-        開催日　{formatDateRange(item.startAt, item.endAt)}
-      </p>
-      {item.location ? <p className="text-sm text-brand-light">開催地　{item.location}</p> : null}
-      <div
-        className="prose prose-sm mt-8 max-w-none text-brand-light"
-        dangerouslySetInnerHTML={{ __html: item.body }}
-      />
-      <a
-        href="/contact"
-        className="mt-10 inline-block rounded-md bg-brand px-6 py-3 text-sm text-white hover:bg-brand-light"
-      >
-        このイベントについて問い合わせる
-      </a>
-    </div>
+    <section ref={ref} className="pt-32 pb-24 md:pt-40 px-6">
+      <div className="max-w-3xl mx-auto">
+        <Link to="/events" className="text-xs tracking-widest text-primary hover:text-primary-dark">
+          ← イベント一覧へ戻る
+        </Link>
+
+        <div className="fade-in-up mt-6">
+          {item.reservationRequired ? (
+            <span className="text-[10px] tracking-wide bg-primary text-white px-2 py-0.5">
+              予約必要です
+            </span>
+          ) : null}
+          <h1 className="mt-3 text-2xl md:text-3xl font-serif font-light text-gray-800">
+            {item.title}
+          </h1>
+          <p className="mt-4 text-sm text-gray-500">
+            開催日　{item.startDate} 〜 {item.endDate}
+          </p>
+          <p className="text-sm text-gray-500">開催地　{item.location}</p>
+
+          <p className="mt-8 text-sm leading-relaxed text-gray-600">{item.description}</p>
+
+          <Link to="/contact" className="btn-primary mt-10 inline-block text-xs">
+            このイベントについて問い合わせる
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }

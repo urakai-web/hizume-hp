@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import PageBanner from "../components/PageBanner";
+import { useFadeIn } from "../hooks/useFadeIn";
+
 const services = [
   { title: "エアコン取付・交換", body: "新規取付から古い機種の交換まで対応します。" },
   { title: "給湯器交換", body: "電気・ガス給湯器の交換・入れ替えに対応します。" },
@@ -7,30 +11,41 @@ const services = [
   { title: "その他住宅設備", body: "上記以外の住宅設備についても、まずはお気軽にご相談ください。" },
 ];
 
-export function Facilities() {
+export default function Facilities() {
+  const ref = useFadeIn<HTMLDivElement>();
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-sm tracking-widest text-brand-light">FACILITIES</p>
-      <h1 className="mt-3 text-2xl font-semibold text-brand">住宅設備・メンテナンス</h1>
-      <p className="mt-6 text-sm leading-relaxed text-brand-light">
-        エアコンの取付だけでなく、給湯器や水回り設備の交換、電気工事、外壁・屋根のメンテナンスまで、家の設備に関
-        することは幅広く承っています。「これも頼んでいいのかな？」という内容でも、まずはお気軽にご相談ください。
-      </p>
+    <>
+      <PageBanner
+        eyebrow="Facilities"
+        title="住宅設備・メンテナンス"
+        description="エアコン取付だけでなく、家の設備に関することは幅広く承っています。"
+      />
 
-      <ul className="mt-12 grid gap-6 sm:grid-cols-2">
-        {services.map((item) => (
-          <li key={item.title} className="rounded-lg border border-brand/10 p-6">
-            <h2 className="font-semibold text-brand">{item.title}</h2>
-            <p className="mt-2 text-sm text-brand-light">{item.body}</p>
-          </li>
-        ))}
-      </ul>
+      <section ref={ref} className="py-24 md:py-32 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <p className="fade-in-up text-sm leading-relaxed text-gray-600">
+            エアコンの取付だけでなく、給湯器や水回り設備の交換、電気工事、外壁・屋根のメンテナンスまで、家の設備
+            に関することは幅広く承っています。「これも頼んでいいのかな？」という内容でも、まずはお気軽にご相談
+            ください。
+          </p>
 
-      <div className="mt-16">
-        <a href="/contact" className="text-sm text-brand hover:underline">
-          住宅設備について相談する →
-        </a>
-      </div>
-    </div>
+          <ul className="fade-in-up mt-16 grid gap-6 sm:grid-cols-2">
+            {services.map((item) => (
+              <li key={item.title} className="border border-gray-200 p-6">
+                <h2 className="font-medium text-gray-800">{item.title}</h2>
+                <p className="mt-2 text-sm text-gray-500">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-16 text-center">
+            <Link to="/contact" className="btn-primary text-xs inline-block">
+              住宅設備について相談する →
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

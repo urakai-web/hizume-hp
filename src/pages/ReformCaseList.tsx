@@ -1,34 +1,47 @@
-import type { ReformCaseItem } from "../lib/types";
+import { Link } from "react-router-dom";
+import PageBanner from "../components/PageBanner";
+import { reformCases } from "../data/reformCases";
+import { useFadeIn } from "../hooks/useFadeIn";
 
-export type ReformCaseListProps = {
-  cases: ReformCaseItem[];
-};
+export default function ReformCaseList() {
+  const ref = useFadeIn<HTMLDivElement>();
 
-export function ReformCaseList({ cases }: ReformCaseListProps) {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
-      <p className="text-sm tracking-widest text-brand-light">REFORM CASE STUDIES</p>
-      <h1 className="mt-3 text-2xl font-semibold text-brand">リフォーム施工事例</h1>
+    <>
+      <PageBanner eyebrow="Reform Works" title="リフォーム施工事例" />
 
-      {cases.length === 0 ? (
-        <p className="mt-8 text-sm text-brand-light">
-          現在準備中です。近日、リフォームの施工事例を公開予定です。
-        </p>
-      ) : (
-        <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {cases.map((item) => (
-            <li key={item.id}>
-              <a href={`/reform/case/${item.id}`} className="block">
-                <div className="aspect-[4/3] rounded-md border border-brand/10 bg-brand/5" />
-                <p className="mt-3 font-medium text-brand">{item.title}</p>
-                {item.workDescription ? (
-                  <p className="mt-1 text-xs text-brand-light">{item.workDescription}</p>
-                ) : null}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <section ref={ref} className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          {reformCases.length === 0 ? (
+            <div className="fade-in-up text-center">
+              <p className="text-sm text-gray-500">現在準備中です。近日、リフォームの施工事例を公開予定です。</p>
+              <Link to="/reform" className="btn-outline text-xs mt-8 inline-block">
+                リフォームについて詳しく見る
+              </Link>
+            </div>
+          ) : (
+            <ul className="fade-in-up grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+              {reformCases.map((item) => (
+                <li key={item.id}>
+                  <Link to={`/reform/case/${item.id}`} className="group block">
+                    <div className="relative overflow-hidden aspect-[4/3]">
+                      <img
+                        src={item.afterImage}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <h2 className="mt-4 text-sm font-medium text-gray-800 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h2>
+                    <p className="text-xs text-gray-400 mt-1">{item.workDescription}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

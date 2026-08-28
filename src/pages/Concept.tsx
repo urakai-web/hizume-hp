@@ -1,4 +1,6 @@
-import { company } from "../lib/company";
+import PageBanner from "../components/PageBanner";
+import { useFadeIn } from "../hooks/useFadeIn";
+import { company } from "../data/company";
 
 const styleItems = [
   {
@@ -38,52 +40,61 @@ const philosophyItems = [
   },
 ];
 
-export function Concept() {
+export default function Concept() {
+  const ref = useFadeIn<HTMLDivElement>();
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-sm tracking-widest text-brand-light">CONCEPT</p>
-      <h1 className="mt-3 text-2xl font-semibold text-brand">私たちについて</h1>
+    <>
+      <PageBanner eyebrow="Concept" title="私たちについて" />
 
-      <section className="mt-10 space-y-4 text-sm leading-loose text-brand-light">
-        <p>
-          あなたにとって、「家」とはどんな存在でしょうか。あなたが家に求めているのは、いったい何でしょうか。
-          おそらく、その答えは人の数だけあるはずです。たとえば「家には何より快適さが必要だ」と誰もが口にした
-          としても、あなたの求める快さと、他の誰かが思う快さとは、きっと少しずつ違います。むしろ違っていて当
-          然で、私たちの家づくりは、そのひとりひとり、ひと家族ひと家族の小さな「違い」を見つけ出すところから
-          始まります。
-        </p>
-        <p>
-          かつて、ある高名な建築家は「住宅は住むための機械である」と書きました。けれど、と私たちは思うので
-          す。人は、けっして機械ではない、と。あなたがいて、家族がいる。それぞれに異なる住まい方がある。
-          ”あなた”がいなければ、そこにあるのは建物であって、”家”ではありません。家は、工業化された箱であって
-          はならない。そう考えています。
-        </p>
-        <p className="text-right text-brand">代表取締役　{company.representative}</p>
-      </section>
-
-      <section className="mt-16">
-        <h2 className="text-lg font-semibold text-brand">Style</h2>
-        <div className="mt-6 space-y-8">
-          {styleItems.map((item) => (
-            <div key={item.title}>
-              <h3 className="font-semibold text-brand">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-light">{item.body}</p>
-            </div>
-          ))}
+      <section ref={ref} className="py-24 md:py-32 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="fade-in-up space-y-6 text-sm leading-loose text-gray-600">
+            <p>
+              あなたにとって、「家」とはどんな存在でしょうか。あなたが家に求めているのは、いったい何でしょうか。
+              おそらく、その答えは人の数だけあるはずです。たとえば「家には何より快適さが必要だ」と誰もが口にした
+              としても、あなたの求める快さと、他の誰かが思う快さとは、きっと少しずつ違います。むしろ違っていて当
+              然で、私たちの家づくりは、そのひとりひとり、ひと家族ひと家族の小さな「違い」を見つけ出すところから
+              始まります。
+            </p>
+            <p>
+              かつて、ある高名な建築家は「住宅は住むための機械である」と書きました。けれど、と私たちは思うので
+              す。人は、けっして機械ではない、と。あなたがいて、家族がいる。それぞれに異なる住まい方がある。
+              ”あなた”がいなければ、そこにあるのは建物であって、”家”ではありません。家は、工業化された箱であって
+              はならない。そう考えています。
+            </p>
+            <p className="text-right text-gray-800 font-medium">代表取締役　{company.representative}</p>
+          </div>
         </div>
       </section>
 
-      <section className="mt-16">
-        <h2 className="text-lg font-semibold text-brand">不易流行</h2>
-        <div className="mt-6 space-y-8">
-          {philosophyItems.map((item) => (
-            <div key={item.title}>
-              <h3 className="font-semibold text-brand">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-light">{item.body}</p>
-            </div>
-          ))}
+      <section className="py-24 md:py-32 bg-warm-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="section-title mb-16">Style</h2>
+          <div className="space-y-16">
+            {styleItems.map((item) => (
+              <div key={item.title}>
+                <h3 className="text-xl font-serif font-light text-gray-800 mb-4">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">{item.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-    </div>
+
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="section-title mb-16">不易流行</h2>
+          <div className="space-y-16">
+            {philosophyItems.map((item) => (
+              <div key={item.title}>
+                <h3 className="text-xl font-serif font-light text-gray-800 mb-4">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

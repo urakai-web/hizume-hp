@@ -1,4 +1,6 @@
-import { company } from "../lib/company";
+import PageBanner from "../components/PageBanner";
+import { useFadeIn } from "../hooks/useFadeIn";
+import { company } from "../data/company";
 
 const rows: [string, string][] = [
   ["社名", company.name],
@@ -18,20 +20,25 @@ const rows: [string, string][] = [
   ["許認可", company.licenses.join(" / ")],
 ];
 
-export function Company() {
-  return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-sm tracking-widest text-brand-light">COMPANY</p>
-      <h1 className="mt-3 text-2xl font-semibold text-brand">会社概要</h1>
+export default function Company() {
+  const ref = useFadeIn<HTMLDivElement>();
 
-      <dl className="mt-10 divide-y divide-brand/10 text-sm">
-        {rows.map(([label, value]) => (
-          <div key={label} className="grid gap-1 py-4 sm:grid-cols-[10rem_1fr] sm:gap-4">
-            <dt className="text-brand-light">{label}</dt>
-            <dd className="text-brand">{value}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
+  return (
+    <>
+      <PageBanner eyebrow="Company" title="会社概要" />
+
+      <section ref={ref} className="py-24 md:py-32 bg-white">
+        <div className="fade-in-up max-w-3xl mx-auto px-6">
+          <dl className="divide-y divide-gray-200 text-sm">
+            {rows.map(([label, value]) => (
+              <div key={label} className="grid gap-1 py-5 sm:grid-cols-[10rem_1fr] sm:gap-4">
+                <dt className="text-gray-400">{label}</dt>
+                <dd className="text-gray-800">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,33 +1,122 @@
-import { company } from "../lib/company";
-import { navItems } from "./nav";
+import { Link } from "react-router-dom";
+import { company } from "../data/company";
 
-export function Footer() {
+const footerNav = [
+  {
+    heading: "会社情報",
+    links: [
+      { label: "私たちについて", href: "/concept" },
+      { label: "会社概要", href: "/company" },
+      { label: "お問い合わせ", href: "/contact" },
+    ],
+  },
+  {
+    heading: "事業案内",
+    links: [
+      { label: "新築の施工事例", href: "/case" },
+      { label: "リフォーム", href: "/reform" },
+      { label: "住宅設備・メンテナンス", href: "/facilities" },
+    ],
+  },
+  {
+    heading: "実績・お知らせ",
+    links: [
+      { label: "施工事例", href: "/case" },
+      { label: "お知らせ・コラム", href: "/news" },
+      { label: "イベント・見学会", href: "/events" },
+    ],
+  },
+];
+
+export default function Footer() {
   return (
-    <footer className="mt-24 bg-brand text-sand/70">
-      <div className="mx-auto max-w-6xl px-6 py-16 text-sm">
-        <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
+    <footer className="bg-gray-900 text-gray-400">
+      {/* Main footer */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Company info */}
           <div>
-            <p className="text-base font-semibold text-sand">{company.name}</p>
-            <p className="mt-3">{company.address}</p>
-            <p className="mt-1">
-              TEL: <a href={`tel:${company.tel.replace(/-/g, "")}`}>{company.tel}</a>
-            </p>
+            <div className="mb-6">
+              <p className="text-white font-serif font-light text-xl tracking-widest">
+                {company.nameShort}
+              </p>
+              <p className="text-gray-500 text-[10px] tracking-widest mt-1">
+                HIZUME ARCHITECT OFFICE
+              </p>
+            </div>
+            <address className="not-italic text-sm leading-8 space-y-1">
+              <p>{company.address}</p>
+              <p>
+                TEL:{" "}
+                <a
+                  href={`tel:${company.tel.replace(/-/g, "")}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {company.tel}
+                </a>
+              </p>
+              <p>
+                FAX:{" "}
+                <a
+                  href={`tel:${company.fax.replace(/-/g, "")}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {company.fax}
+                </a>
+              </p>
+            </address>
+            <div className="mt-6 text-xs space-y-1">
+              <p>営業時間：{company.businessHours}</p>
+              <p>定休日：{company.closedDays}</p>
+            </div>
+
+            {/* SNS */}
+            <div className="flex gap-4 mt-6">
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="w-8 h-8 border border-gray-700 flex items-center justify-center hover:border-white hover:text-white transition-colors text-sm"
+              >
+                IG
+              </a>
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="w-8 h-8 border border-gray-700 flex items-center justify-center hover:border-white hover:text-white transition-colors text-sm"
+              >
+                FB
+              </a>
+            </div>
           </div>
-          <nav aria-label="フッターナビゲーション">
-            <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-xs tracking-wide sm:grid-cols-1">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} className="transition hover:text-sand">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+
+          {/* Nav columns */}
+          {footerNav.map((col) => (
+            <div key={col.heading}>
+              <h3 className="text-white text-xs tracking-widest uppercase mb-6 pb-3 border-b border-gray-700">
+                {col.heading}
+              </h3>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-sm hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <p className="mt-12 text-xs text-sand/40">
-          &copy; {new Date().getFullYear()} {company.name}
-        </p>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
+          <p>© {new Date().getFullYear()} {company.name} All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
