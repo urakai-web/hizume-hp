@@ -9,7 +9,8 @@ export type CaseDisplay = {
   image: string;
   gallery: { image: string; caption?: string }[];
   priceRange: string;
-  tags: string[];
+  /** 自由記述の構造テキスト(例: 「2階建て・店舗併用住宅」) */
+  structure: string;
   location?: string;
   body: string;
 };
@@ -21,7 +22,7 @@ function fromMicroCms(item: CaseContent): CaseDisplay {
     image: item.mainImage.url,
     gallery: (item.gallery ?? []).map((g) => ({ image: g.image.url, caption: g.caption })),
     priceRange: item.priceRange ?? "",
-    tags: item.structure ?? [],
+    structure: item.structure ?? "",
     location: item.location,
     body: item.body,
   };
@@ -34,9 +35,17 @@ function fromSeed(): CaseDisplay[] {
     image: item.image,
     gallery: [],
     priceRange: item.priceRange,
-    tags: item.tags,
+    structure: item.structure,
     body: "施工事例の詳しい内容は近日公開予定です。",
   }));
+}
+
+/** 自由記述の構造テキストを表示用に分割する(「・」区切りを想定) */
+export function splitStructure(structure: string): string[] {
+  return structure
+    .split(/[・,、]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 /**

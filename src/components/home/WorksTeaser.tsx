@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useCases } from "../../hooks/useCases";
+import { splitStructure, useCases } from "../../hooks/useCases";
 import { useFadeIn } from "../../hooks/useFadeIn";
 
 const GAP = 24;
@@ -87,7 +87,7 @@ export default function WorksTeaser() {
                   </div>
                   <div className="mt-4">
                     <div className="flex flex-wrap gap-1.5 mb-2">
-                      {work.tags.map((tag) => (
+                      {splitStructure(work.structure).map((tag) => (
                         <span
                           key={tag}
                           className="text-[10px] tracking-wide border border-gray-300 text-gray-500 px-2 py-0.5"

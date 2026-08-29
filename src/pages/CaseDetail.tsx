@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useCases } from "../hooks/useCases";
+import { splitStructure, useCases } from "../hooks/useCases";
 import { useFadeIn } from "../hooks/useFadeIn";
 
 export default function CaseDetail() {
@@ -28,7 +28,7 @@ export default function CaseDetail() {
 
         <div className="fade-in-up mt-6">
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {item.tags.map((tag) => (
+            {splitStructure(item.structure).map((tag) => (
               <span
                 key={tag}
                 className="text-[10px] tracking-wide border border-gray-300 text-gray-500 px-2 py-0.5"
