@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { isMicroCmsConfigured, listCases } from "../lib/microcms";
 import { cases as seedCases } from "../data/cases";
-import type { CaseContent } from "../lib/types";
+import type { CaseContent, MicroCMSImage } from "../lib/types";
 
 export type CaseDisplay = {
   id: string;
@@ -15,16 +15,20 @@ export type CaseDisplay = {
   body: string;
 };
 
+const FALLBACK_IMAGE = "/images/works-01.png";
+
 function fromMicroCms(item: CaseContent): CaseDisplay {
   return {
     id: item.id,
     title: item.title,
-    image: item.mainImage.url,
-    gallery: (item.gallery ?? []).map((g) => ({ image: g.image.url, caption: g.caption })),
+    image: item.mainImage?.url ?? FALLBACK_IMAGE,
+    gallery: (item.gallery ?? [])
+      .filter((g): g is typeof g & { image: MicroCMSImage } => Boolean(g.image?.url))
+      .map((g) => ({ image: g.image.url, caption: g.caption })),
     priceRange: item.priceRange ?? "",
     structure: item.structure ?? "",
     location: item.location,
-    body: item.body,
+    body: item.body ?? "",
   };
 }
 

@@ -6,3 +6,6 @@ worker-configuration.d.ts
 .env.*
 !.env.example
 *.tsbuildinfo
+
+# 実際の施工写真の元データ置き場(容量が大きいためGit管理外。microCMS等に直接アップロードする)
+HP用画像素材*/
