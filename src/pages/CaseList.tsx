@@ -17,6 +17,11 @@ export default function CaseList() {
 
       <section ref={ref} className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
+          {cases.length === 0 ? (
+            <p className="fade-in-up text-center text-sm text-gray-500">
+              現在準備中です。近日、施工事例を公開予定です。
+            </p>
+          ) : (
           <ul className="fade-in-up grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {cases.map((item) => (
               <li key={item.id}>
@@ -49,6 +54,7 @@ export default function CaseList() {
               </li>
             ))}
           </ul>
+          )}
         </div>
       </section>
     </>

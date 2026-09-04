@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { isMicroCmsConfigured, listCases } from "../lib/microcms";
-import { cases as seedCases } from "../data/cases";
 import type { CaseContent, MicroCMSImage } from "../lib/types";
 
 export type CaseDisplay = {
@@ -32,18 +31,6 @@ function fromMicroCms(item: CaseContent): CaseDisplay {
   };
 }
 
-function fromSeed(): CaseDisplay[] {
-  return seedCases.map((item) => ({
-    id: item.id,
-    title: item.title,
-    image: item.image,
-    gallery: [],
-    priceRange: item.priceRange,
-    structure: item.structure,
-    body: "施工事例の詳しい内容は近日公開予定です。",
-  }));
-}
-
 /** 自由記述の構造テキストを表示用に分割する(「・」区切りを想定) */
 export function splitStructure(structure: string): string[] {
   return structure
@@ -52,12 +39,9 @@ export function splitStructure(structure: string): string[] {
     .filter(Boolean);
 }
 
-/**
- * microCMSが設定されていればそちらを取得し、未設定または0件の間は
- * 仮のサンプルデータ(src/data/cases.ts)を表示する。
- */
+/** microCMSの施工事例を取得する。未設定または0件の間は空配列を返す。 */
 export function useCases() {
-  const [cases, setCases] = useState<CaseDisplay[]>(fromSeed);
+  const [cases, setCases] = useState<CaseDisplay[]>([]);
   const [loading, setLoading] = useState(isMicroCmsConfigured);
 
   useEffect(() => {
@@ -67,9 +51,7 @@ export function useCases() {
     listCases()
       .then((res) => {
         if (cancelled) return;
-        if (res.contents.length > 0) {
-          setCases(res.contents.map(fromMicroCms));
-        }
+        setCases(res.contents.map(fromMicroCms));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);

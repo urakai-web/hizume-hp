@@ -62,6 +62,9 @@ export default function WorksTeaser() {
           </Link>
         </div>
 
+        {featured.length === 0 ? (
+          <p className="fade-in-up text-sm text-gray-500">現在準備中です。近日公開予定です。</p>
+        ) : (
         <div className="fade-in-up">
           <div ref={wrapperRef} className="relative overflow-hidden">
             <div
@@ -123,6 +126,7 @@ export default function WorksTeaser() {
             </button>
           </div>
         </div>
+        )}
       </div>
     </section>
   );
