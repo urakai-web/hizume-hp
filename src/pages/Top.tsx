@@ -1,5 +1,4 @@
 import HeroSection from "../components/home/HeroSection";
-import BusinessSection from "../components/home/BusinessSection";
 import ConceptTeaser from "../components/home/ConceptTeaser";
 import StyleSection from "../components/home/StyleSection";
 import WorksTeaser from "../components/home/WorksTeaser";
@@ -10,7 +9,6 @@ export default function Top() {
   return (
     <>
       <HeroSection />
-      <BusinessSection />
       <ConceptTeaser />
       <StyleSection />
       <WorksTeaser />

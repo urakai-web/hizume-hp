@@ -6,29 +6,30 @@ const items = [
     title: "どこでもない「その場所」に",
     subtitle: "Read the Site",
     description:
-      "世界に二つとして同じ土地はありません。その土地の「特徴」を丁寧に読み取り、家の「特長」へと変えていきます。",
-    image: "/images/feature-01.png",
+      "世界に二つとして同じ土地はありません。\nその土地の「特徴」を丁寧に読み取り、家の「特長」へと昇華していきます。",
+    image: "/images/style/style-01.jpg",
   },
   {
     icon: "💬",
     title: "対話重視の打ち合わせ",
     subtitle: "Dialogue",
-    description: "一軒の家が完成するまでに、打ち合わせの回数はおよそ40回。対話を重ねるほどに、目指す方向がはっきりと見えてきます。",
-    image: "/images/feature-02.png",
+    description:
+      "一軒の家が完成するまでに、打ち合わせの回数はおよそ40回。\n対話を重ねるほどに、あなたの未来の暮らしを形にしていきます。",
+    image: "/images/style/style-02.jpg",
   },
   {
     icon: "🖋️",
     title: "「作品」と「商品」はつくらない",
     subtitle: "Not a Product",
-    description: "ひとりひとり、ひと家族ひと家族、まったく異なる歩みと個性を映しながら、丁寧につくり上げていきます。",
-    image: "/images/feature-03.png",
+    description: "一人ひとり、その家族ごとにまったく異なる歩みと個性を映しながら、丁寧につくり上げていきます。",
+    image: "/images/style/style-03.jpg",
   },
   {
     icon: "🔨",
     title: "職人の技を活かす",
     subtitle: "Craftsmanship",
     description: "地元でも指折りの確かな腕を持つ職人たちと契約し、余裕を持って、細部にまでこだわった家づくりに取り組んでいます。",
-    image: "/images/feature-04.png",
+    image: "/images/style/style-04.jpg",
   },
 ];
 
@@ -67,10 +68,12 @@ export default function StyleSection() {
 
               <div className={index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}>
                 <p className="text-xs tracking-widest text-accent uppercase mb-2">{item.subtitle}</p>
-                <h3 className="text-2xl md:text-3xl font-serif font-light mb-6 text-gray-800">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-light mb-6 text-gray-800 whitespace-nowrap md:whitespace-normal">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-sm">{item.description}</p>
+                <p className="text-gray-600 leading-relaxed text-sm whitespace-pre-line">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}

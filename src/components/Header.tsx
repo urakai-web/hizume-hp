@@ -37,20 +37,18 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex flex-col leading-none group">
+        <Link to="/" className="flex items-center gap-3 group">
+          <img
+            src="/images/logo.svg"
+            alt=""
+            className={`h-8 w-auto transition-all duration-300 ${solid ? "" : "brightness-0 invert"}`}
+          />
           <span
-            className={`text-xl font-serif font-light tracking-widest transition-colors duration-300 ${
-              solid ? "text-primary-dark" : "text-white"
+            className={`text-lg font-serif font-light tracking-widest transition-colors duration-300 ${
+              solid ? "text-black" : "text-white"
             }`}
           >
             樋爪住宅研究所
-          </span>
-          <span
-            className={`text-[10px] tracking-widest mt-0.5 transition-colors duration-300 ${
-              solid ? "text-gray-500" : "text-white/80"
-            }`}
-          >
-            HIZUME ARCHITECT OFFICE
           </span>
         </Link>
 
