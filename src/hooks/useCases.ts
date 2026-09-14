@@ -20,11 +20,11 @@ function fromMicroCms(item: CaseContent): CaseDisplay {
   return {
     id: item.id,
     title: item.title,
-    image: item.mainImage?.url ?? FALLBACK_IMAGE,
+    image: item.mainimage?.url ?? FALLBACK_IMAGE,
     gallery: (item.gallery ?? [])
       .filter((g): g is typeof g & { image: MicroCMSImage } => Boolean(g.image?.url))
       .map((g) => ({ image: g.image.url, caption: g.caption })),
-    priceRange: item.priceRange ?? "",
+    priceRange: item.pricerange ?? "",
     structure: item.structure ?? "",
     location: item.location,
     body: item.body ?? "",

@@ -23,9 +23,10 @@ export type GalleryPhoto = {
  */
 export type CaseContent = MicroCMSListContent & {
   title: string;
-  mainImage?: MicroCMSImage;
+  // microCMSのカスタムフィールドIDは大文字を使えないため、実際のAPIキーは小文字
+  mainimage?: MicroCMSImage;
   gallery?: GalleryPhoto[];
-  priceRange?: string;
+  pricerange?: string;
   /** 自由記述のテキストフィールド(例: 「2階建て・店舗併用住宅」) */
   structure?: string;
   location?: string;
