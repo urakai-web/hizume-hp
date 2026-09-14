@@ -1,3 +1,7 @@
 name = "hizume-hp"
 compatibility_date = "2024-12-01"
 pages_build_output_dir = "dist"
+
+[vars]
+VITE_MICROCMS_SERVICE_DOMAIN = "nzg6wycus3"
+VITE_MICROCMS_API_KEY = "ZbMu4S8XWu6Tlezt75BeuyOJd1nIUBsa64Dw"
