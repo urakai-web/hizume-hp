@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "echo DEBUG_MICROCMS_DOMAIN=[$VITE_MICROCMS_SERVICE_DOMAIN]; if [ -z \"$VITE_MICROCMS_API_KEY\" ]; then echo DEBUG_MICROCMS_KEY=EMPTY; else echo DEBUG_MICROCMS_KEY=SET; fi; vite build",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler pages deploy dist"
   },
