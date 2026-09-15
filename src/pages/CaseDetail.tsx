@@ -52,9 +52,9 @@ export default function CaseDetail() {
             ) : null}
 
             {item.gallery.length > 0 ? (
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <div className="mt-10 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-6 -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:overflow-visible">
                 {item.gallery.map((photo, index) => (
-                  <figure key={index}>
+                  <figure key={index} className="flex-none w-full snap-center sm:w-auto">
                     <div className="aspect-[4/3] overflow-hidden">
                       <img
                         src={photo.image}
