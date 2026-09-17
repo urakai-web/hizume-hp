@@ -49,21 +49,21 @@ export default function Concept() {
 
       <section ref={ref} className="py-24 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-6">
-          <div className="fade-in-up space-y-6 text-sm leading-loose text-gray-600">
-            <p>
-              あなたにとって、「家」とはどんな存在でしょうか。あなたが家に求めているのは、いったい何でしょうか。
-              おそらく、その答えは人の数だけあるはずです。たとえば「家には何より快適さが必要だ」と誰もが口にした
-              としても、あなたの求める快さと、他の誰かが思う快さとは、きっと少しずつ違います。むしろ違っていて当
-              然で、私たちの家づくりは、そのひとりひとり、ひと家族ひと家族の小さな「違い」を見つけ出すところから
-              始まります。
-            </p>
-            <p>
-              かつて、ある高名な建築家は「住宅は住むための機械である」と書きました。けれど、と私たちは思うので
-              す。人は、けっして機械ではない、と。あなたがいて、家族がいる。それぞれに異なる住まい方がある。
-              ”あなた”がいなければ、そこにあるのは建物であって、”家”ではありません。家は、工業化された箱であって
-              はならない。そう考えています。
-            </p>
-            <p className="text-right text-gray-800 font-medium">代表取締役　{company.representative}</p>
+          <div className="fade-in-up flex flex-col gap-10 sm:flex-row sm:items-start">
+            <img
+              src="/images/representative.jpg"
+              alt={company.representative}
+              className="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover mx-auto sm:mx-0 flex-none"
+            />
+            <div className="space-y-6 text-sm leading-loose text-gray-600">
+              <p>
+                あなたにとって、「家」とはどんな存在でしょうか。あなたが家に求めているのは、いったい何でしょうか。おそらく、その答えは人の数だけあるはずです。たとえば「家には何より快適さが必要だ」と誰もが口にしたとしても、あなたの求める快さと、他の誰かが思う快さとは、きっと少しずつ違います。むしろ違っていて当然で、私たちの家づくりは、そのひとりひとり、ひと家族ひと家族の小さな「違い」を見つけ出すところから始まります。
+              </p>
+              <p>
+                かつて、ある高名な建築家は「住宅は住むための機械である」と書きました。けれど、と私たちは思うのです。人は、けっして機械ではない、と。あなたがいて、家族がいる。それぞれに異なる住まい方がある。”あなた”がいなければ、そこにあるのは建物であって、”家”ではありません。家は、工業化された箱であってはならない。そう考えています。
+              </p>
+              <p className="text-right text-gray-800 font-medium">代表取締役　{company.representative}</p>
+            </div>
           </div>
         </div>
       </section>

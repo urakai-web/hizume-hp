@@ -25,9 +25,7 @@ export default function Facilities() {
       <section ref={ref} className="py-24 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <p className="fade-in-up text-sm leading-relaxed text-gray-600">
-            エアコンの取付だけでなく、給湯器や水回り設備の交換、電気工事、外壁・屋根のメンテナンスまで、家の設備
-            に関することは幅広く承っています。「これも頼んでいいのかな？」という内容でも、まずはお気軽にご相談
-            ください。
+            エアコンの取付だけでなく、給湯器や水回り設備の交換、電気工事、外壁・屋根のメンテナンスまで、家の設備に関することは幅広く承っています。「これも頼んでいいのかな？」という内容でも、まずはお気軽にご相談ください。
           </p>
 
           <ul className="fade-in-up mt-16 grid gap-6 sm:grid-cols-2">

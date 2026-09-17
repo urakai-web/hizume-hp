@@ -23,8 +23,7 @@ export default function Reform() {
       <section ref={ref} className="py-24 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <p className="fade-in-up text-sm leading-relaxed text-gray-600">
-            新築で培った「対話を重ねてつくる」姿勢はそのままに、中古物件のリフォーム・リノベーションにも対応して
-            います。既存の間取りや構造を活かしながら、暮らしやすさと心地よさを両立するご提案をいたします。
+            新築で培った「対話を重ねてつくる」姿勢はそのままに、中古物件のリフォーム・リノベーションにも対応しています。既存の間取りや構造を活かしながら、暮らしやすさと心地よさを両立するご提案をいたします。
           </p>
         </div>
       </section>

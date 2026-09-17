@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { isMicroCmsConfigured, listCases } from "../lib/microcms";
+import { isMicroCmsConfigured, listCases, listNonResidentialCases } from "../lib/microcms";
 import type { CaseContent, MicroCMSImage } from "../lib/types";
+
+type ListResponse<T> = { contents: T[]; totalCount: number };
 
 export type CaseDisplay = {
   id: string;
@@ -39,8 +41,8 @@ export function splitStructure(structure: string): string[] {
     .filter(Boolean);
 }
 
-/** microCMSの施工事例を取得する。未設定または0件の間は空配列を返す。 */
-export function useCases() {
+/** microCMSの施工事例(共通)を取得する。未設定または0件の間は空配列を返す。 */
+function useCaseList(fetchList: () => Promise<ListResponse<CaseContent>>) {
   const [cases, setCases] = useState<CaseDisplay[]>([]);
   const [loading, setLoading] = useState(isMicroCmsConfigured);
 
@@ -48,7 +50,7 @@ export function useCases() {
     if (!isMicroCmsConfigured) return;
     let cancelled = false;
 
-    listCases()
+    fetchList()
       .then((res) => {
         if (cancelled) return;
         setCases(res.contents.map(fromMicroCms));
@@ -60,7 +62,17 @@ export function useCases() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [fetchList]);
 
   return { cases, loading };
+}
+
+/** 新築の施工事例(case) */
+export function useCases() {
+  return useCaseList(listCases);
+}
+
+/** 非住宅の施工事例(nonresidential) */
+export function useNonResidentialCases() {
+  return useCaseList(listNonResidentialCases);
 }
