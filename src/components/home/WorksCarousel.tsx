@@ -22,14 +22,17 @@ export default function WorksCarousel({ title, basePath, cases, emptyText }: Pro
 
   useEffect(() => {
     const update = () => {
-      const ipv = window.innerWidth < 768 ? 1 : 3;
+      const w = window.innerWidth;
+      const ipv = w < 640 ? 1 : w < 1024 ? 2 : w < 1280 ? 3 : 4;
       setItemsPerView(ipv);
       if (wrapperRef.current) setWrapperWidth(wrapperRef.current.offsetWidth);
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, []);
+    // featured.length を依存に含めるのは、データ取得前(0件)は wrapperRef が
+    // 別のDOM要素(空状態のp)を指しているため、件数が確定してから再計測が必要なため
+  }, [featured.length]);
 
   const maxIndex = Math.max(0, featured.length - itemsPerView);
   const itemWidth =
