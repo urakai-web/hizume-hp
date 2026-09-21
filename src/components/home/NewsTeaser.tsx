@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { news } from "../../data/news";
+import { useNews } from "../../hooks/useNews";
 import { useFadeIn } from "../../hooks/useFadeIn";
 
 const categoryColor: Record<string, string> = {
@@ -9,6 +9,7 @@ const categoryColor: Record<string, string> = {
 
 export default function NewsTeaser() {
   const ref = useFadeIn<HTMLDivElement>();
+  const { news } = useNews();
   const items = news.slice(0, 5);
 
   return (
@@ -29,6 +30,9 @@ export default function NewsTeaser() {
           </div>
 
           <div className="md:col-span-2 fade-in-up">
+            {items.length === 0 ? (
+              <p className="text-sm text-gray-500">現在準備中です。近日公開予定です。</p>
+            ) : (
             <ul className="divide-y divide-gray-100">
               {items.map((item) => (
                 <li key={item.id}>
@@ -39,7 +43,7 @@ export default function NewsTeaser() {
                     <div className="flex items-center gap-3 flex-shrink-0">
                       <time className="text-xs text-gray-400 w-24">{item.date}</time>
                       <span
-                        className={`text-[10px] tracking-wide px-2 py-0.5 ${categoryColor[item.category]} whitespace-nowrap`}
+                        className={`text-[10px] tracking-wide px-2 py-0.5 ${categoryColor[item.category] ?? categoryColor["お知らせ"]} whitespace-nowrap`}
                       >
                         {item.category}
                       </span>
@@ -51,6 +55,7 @@ export default function NewsTeaser() {
                 </li>
               ))}
             </ul>
+            )}
           </div>
         </div>
       </div>

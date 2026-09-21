@@ -17,6 +17,16 @@ export type GalleryPhoto = {
 };
 
 /**
+ * お知らせ(microCMS API: news / リスト形式)
+ * セレクトフィールドは単一選択でも配列で返ってくる。日付は公開日(publishedAt)を使う。
+ */
+export type NewsContent = MicroCMSListContent & {
+  title: string;
+  category?: string[] | string;
+  body?: string;
+};
+
+/**
  * 新築の施工事例(microCMS API: case / リスト形式)
  * 下書き段階のコンテンツはフィールドが未入力のことがあるため、
  * title/id 以外は基本的に任意として扱う。
