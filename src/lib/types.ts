@@ -35,7 +35,8 @@ export type CaseContent = MicroCMSListContent & {
   title: string;
   // microCMSのカスタムフィールドIDは大文字を使えないため、実際のAPIキーは小文字
   mainimage?: MicroCMSImage;
-  gallery?: GalleryPhoto[];
+  // 「繰り返し可能」設定が入っていないと配列ではなく単一オブジェクトで返ってくる
+  gallery?: GalleryPhoto[] | GalleryPhoto;
   pricerange?: string;
   /** 自由記述のテキストフィールド(例: 「2階建て・店舗併用住宅」) */
   structure?: string;

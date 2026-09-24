@@ -19,12 +19,15 @@ export type CaseDisplay = {
 const FALLBACK_IMAGE = "/images/works-01.png";
 
 function fromMicroCms(item: CaseContent): CaseDisplay {
+  // ギャラリーが「繰り返し可能」設定になっていないと配列ではなく単一オブジェクトで返ってくるため、
+  // どちらの形でも落ちないように配列に正規化する
+  const galleryList = Array.isArray(item.gallery) ? item.gallery : item.gallery ? [item.gallery] : [];
   return {
     id: item.id,
     title: item.title,
     image: item.mainimage?.url ?? FALLBACK_IMAGE,
-    gallery: (item.gallery ?? [])
-      .filter((g): g is typeof g & { image: MicroCMSImage } => Boolean(g.image?.url))
+    gallery: galleryList
+      .filter((g): g is typeof g & { image: MicroCMSImage } => Boolean(g?.image?.url))
       .map((g) => ({ image: g.image.url, caption: g.caption })),
     priceRange: item.pricerange ?? "",
     structure: item.structure ?? "",
