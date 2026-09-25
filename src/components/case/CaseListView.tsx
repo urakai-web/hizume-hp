@@ -22,7 +22,7 @@ export default function CaseListView({ basePath, banner, emptyText, cases }: Pro
           {cases.length === 0 ? (
             <p className="fade-in-up text-center text-sm text-gray-500">{emptyText}</p>
           ) : (
-            <ul className="fade-in-up grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="fade-in-up grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3">
               {cases.map((item) => (
                 <li key={item.id}>
                   <Link to={`${basePath}/${item.id}`} className="group block">
