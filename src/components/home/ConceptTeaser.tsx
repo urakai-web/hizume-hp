@@ -21,11 +21,14 @@ export default function ConceptTeaser() {
             </div>
           </div>
 
-          <div className="fade-in-up">
+          <div className="fade-in-up" style={{ containerType: "inline-size" }}>
             <p className="text-xs tracking-widest text-primary uppercase mb-3">Our Concept</p>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-light leading-relaxed mb-8 text-gray-800">
-              <span className="block whitespace-nowrap sm:whitespace-normal">「作品」でも「商品」でもない、</span>
-              <span className="block whitespace-nowrap sm:whitespace-normal">あなたの暮らしを。</span>
+            <h2
+              className="font-serif font-light leading-relaxed mb-8 text-gray-800"
+              style={{ fontSize: "clamp(1.05rem, 6cqw, 2.25rem)" }}
+            >
+              <span className="block whitespace-nowrap">「作品」でも「商品」でもない、</span>
+              <span className="block whitespace-nowrap">あなたの暮らしを。</span>
             </h2>
             <div className="space-y-5 text-gray-600 leading-relaxed text-sm">
               <p>

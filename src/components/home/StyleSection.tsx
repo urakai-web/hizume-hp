@@ -51,11 +51,16 @@ export default function StyleSection() {
           {items.map((item, index) => (
             <div
               key={item.title}
-              className={`fade-in-up grid md:grid-cols-2 gap-12 items-center ${
+              className={`fade-in-up grid md:grid-cols-2 gap-6 md:gap-12 items-center ${
                 index % 2 === 1 ? "md:grid-flow-col-dense" : ""
               }`}
             >
-              <div className={index % 2 === 1 ? "md:col-start-2" : ""}>
+              {/* モバイルでは画像より先にタイトルだけ表示する(PCでは非表示、下の見出しがPC用) */}
+              <h3 className="order-1 md:hidden text-xl font-serif font-light text-gray-800 whitespace-nowrap">
+                {item.title}
+              </h3>
+
+              <div className={`order-2 md:order-none ${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                   <div
@@ -66,9 +71,11 @@ export default function StyleSection() {
                 </div>
               </div>
 
-              <div className={index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}>
+              <div
+                className={`order-3 md:order-none ${index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}`}
+              >
                 <p className="text-xs tracking-widest text-accent uppercase mb-2">{item.subtitle}</p>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-light mb-6 text-gray-800 whitespace-nowrap md:whitespace-normal">
+                <h3 className="hidden md:block text-xl sm:text-2xl md:text-3xl font-serif font-light mb-6 text-gray-800 md:whitespace-normal">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm whitespace-pre-line">
