@@ -7,6 +7,7 @@ const navItems = [
   { label: "リフォーム", href: "/reform" },
   { label: "住宅設備", href: "/facilities" },
   { label: "お知らせ", href: "/news" },
+  { label: "イベント", href: "/events" },
   { label: "会社概要", href: "/company" },
 ];
 

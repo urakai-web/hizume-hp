@@ -27,6 +27,18 @@ export type NewsContent = MicroCMSListContent & {
 };
 
 /**
+ * イベント・見学会(microCMS API: event / リスト形式)
+ */
+export type EventContent = MicroCMSListContent & {
+  title: string;
+  eventstart?: string;
+  eventend?: string;
+  location?: string;
+  reservationrequired?: boolean;
+  body?: string;
+};
+
+/**
  * 新築の施工事例(microCMS API: case / リスト形式)
  * 下書き段階のコンテンツはフィールドが未入力のことがあるため、
  * title/id 以外は基本的に任意として扱う。

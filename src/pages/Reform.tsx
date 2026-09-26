@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
 import { useFadeIn } from "../hooks/useFadeIn";
 
@@ -18,6 +17,7 @@ export default function Reform() {
         eyebrow="Reform"
         title="リフォーム・リノベーション"
         description="中古物件の購入をお考えの方から、現在お住まいの住宅の改修まで承ります。"
+        noWrap
       />
 
       <section ref={ref} className="py-24 md:py-32 bg-white">
@@ -43,12 +43,6 @@ export default function Reform() {
             ))}
           </ol>
         </div>
-      </section>
-
-      <section className="py-16 text-center">
-        <Link to="/reform/case" className="btn-outline text-xs inline-block">
-          リフォームの施工事例を見る →
-        </Link>
       </section>
     </>
   );

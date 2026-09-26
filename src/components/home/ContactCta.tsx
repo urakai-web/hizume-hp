@@ -16,7 +16,7 @@ export default function ContactCta() {
         <div className="fade-in-up">
           <p className="text-xs tracking-widest text-white/60 uppercase mb-4">Contact Us</p>
           <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-6">
-            まずは気軽に
+            まずはお気軽に
             <br />
             ご相談ください
           </h2>

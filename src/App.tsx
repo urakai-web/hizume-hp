@@ -9,8 +9,6 @@ import CaseDetail from "./pages/CaseDetail";
 import NonResidentialCaseList from "./pages/NonResidentialCaseList";
 import NonResidentialCaseDetail from "./pages/NonResidentialCaseDetail";
 import Reform from "./pages/Reform";
-import ReformCaseList from "./pages/ReformCaseList";
-import ReformCaseDetail from "./pages/ReformCaseDetail";
 import Facilities from "./pages/Facilities";
 import Company from "./pages/Company";
 import EventList from "./pages/EventList";
@@ -33,8 +31,6 @@ export default function App() {
           <Route path="/case/nonresidential/:id" element={<NonResidentialCaseDetail />} />
           <Route path="/case/:id" element={<CaseDetail />} />
           <Route path="/reform" element={<Reform />} />
-          <Route path="/reform/case" element={<ReformCaseList />} />
-          <Route path="/reform/case/:id" element={<ReformCaseDetail />} />
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/company" element={<Company />} />
           <Route path="/events" element={<EventList />} />

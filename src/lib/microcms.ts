@@ -1,5 +1,5 @@
 import { createClient } from "microcms-js-sdk";
-import type { CaseContent, NewsContent } from "./types";
+import type { CaseContent, EventContent, NewsContent } from "./types";
 
 const serviceDomain = import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN as string | undefined;
 const apiKey = import.meta.env.VITE_MICROCMS_API_KEY as string | undefined;
@@ -64,4 +64,12 @@ export function listNews(): Promise<ListResponse<NewsContent>> {
 
 export function getNonResidentialCase(contentId: string): Promise<CaseContent | null> {
   return getContent<CaseContent>("nonresidential", contentId);
+}
+
+export function listEvents(): Promise<ListResponse<EventContent>> {
+  return listContents<EventContent>("event");
+}
+
+export function getEvent(contentId: string): Promise<EventContent | null> {
+  return getContent<EventContent>("event", contentId);
 }

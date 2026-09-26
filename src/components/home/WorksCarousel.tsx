@@ -23,7 +23,7 @@ export default function WorksCarousel({ title, basePath, cases, emptyText }: Pro
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      const ipv = w < 640 ? 1 : w < 1024 ? 2 : w < 1280 ? 3 : 4;
+      const ipv = w < 1024 ? 2 : w < 1280 ? 3 : 4;
       setItemsPerView(ipv);
       if (wrapperRef.current) setWrapperWidth(wrapperRef.current.offsetWidth);
     };

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import PageBanner from "../components/PageBanner";
-import { events } from "../data/events";
+import { useEvents } from "../hooks/useEvents";
 import { useFadeIn } from "../hooks/useFadeIn";
 
 export default function EventList() {
   const ref = useFadeIn<HTMLDivElement>();
+  const { events } = useEvents();
 
   return (
     <>
