@@ -61,11 +61,13 @@ export default function StyleSection() {
               </h3>
 
               <div className={`order-2 md:order-none ${index % 2 === 1 ? "md:col-start-2" : ""}`}>
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                <div className="relative">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  </div>
                   <div
-                    className={`absolute -bottom-3 w-24 h-1 bg-accent ${
-                      index % 2 === 1 ? "right-4" : "left-4"
+                    className={`absolute -bottom-4 w-full h-full border-2 border-accent -z-10 ${
+                      index % 2 === 1 ? "-left-4" : "-right-4"
                     }`}
                   />
                 </div>

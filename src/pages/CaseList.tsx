@@ -10,7 +10,7 @@ export default function CaseList() {
       banner={{
         eyebrow: "Works",
         title: "新築の施工事例",
-        description: "対話を重ねてつくった、樋爪住宅研究所の施工事例をご紹介します。",
+        description: "対話を重ねてつくった、\n樋爪住宅研究所の施工事例をご紹介します。",
       }}
       emptyText="現在準備中です。近日、施工事例を公開予定です。"
       cases={cases}

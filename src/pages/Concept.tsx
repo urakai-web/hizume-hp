@@ -64,7 +64,7 @@ export default function Concept() {
             {philosophyItems.map((item, index) => (
               <div
                 key={item.title}
-                className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center ${
+                className={`isolate grid md:grid-cols-2 gap-6 md:gap-12 items-center ${
                   index % 2 === 1 ? "md:grid-flow-col-dense" : ""
                 }`}
               >
@@ -74,8 +74,15 @@ export default function Concept() {
                 </h3>
 
                 <div className={`order-2 md:order-none ${index % 2 === 1 ? "md:col-start-2" : ""}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  <div className="relative">
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div
+                      className={`absolute -bottom-4 w-full h-full border-2 border-accent -z-10 ${
+                        index % 2 === 1 ? "-left-4" : "-right-4"
+                      }`}
+                    />
                   </div>
                 </div>
 

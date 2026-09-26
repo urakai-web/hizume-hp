@@ -18,7 +18,9 @@ export default function PageBanner({ eyebrow, title, description, noWrap }: Prop
         {title}
       </h1>
       {description ? (
-        <p className="mt-4 text-sm text-white/80 max-w-xl mx-auto leading-relaxed">{description}</p>
+        <p className="mt-4 text-sm text-white/80 max-w-xl mx-auto leading-relaxed whitespace-pre-line">
+          {description}
+        </p>
       ) : null}
     </section>
   );
