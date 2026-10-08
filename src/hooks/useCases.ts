@@ -8,7 +8,7 @@ export type CaseDisplay = {
   id: string;
   title: string;
   image: string;
-  gallery: { image: string; caption?: string }[];
+  gallery: { image: string; caption?: string; width: number; height: number }[];
   priceRange: string;
   /** 自由記述の構造テキスト(例: 「2階建て・店舗併用住宅」) */
   structure: string;
@@ -28,7 +28,12 @@ function fromMicroCms(item: CaseContent): CaseDisplay {
     image: item.mainimage?.url ?? FALLBACK_IMAGE,
     gallery: galleryList
       .filter((g): g is typeof g & { image: MicroCMSImage } => Boolean(g?.image?.url))
-      .map((g) => ({ image: g.image.url, caption: g.caption })),
+      .map((g) => ({
+        image: g.image.url,
+        caption: g.caption,
+        width: g.image.width || 4,
+        height: g.image.height || 3,
+      })),
     priceRange: item.pricerange ?? "",
     structure: item.structure ?? "",
     location: item.location,

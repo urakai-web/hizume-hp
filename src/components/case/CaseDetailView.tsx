@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { splitStructure, type CaseDisplay } from "../../hooks/useCases";
 import { useFadeIn } from "../../hooks/useFadeIn";
+import CaseGallery from "./CaseGallery";
 
 type Props = {
   backPath: string;
@@ -54,24 +55,7 @@ export default function CaseDetailView({ backPath, backLabel, notFoundText, item
               />
             ) : null}
 
-            {item.gallery.length > 0 ? (
-              <div className="mt-10 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-6 -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:overflow-visible">
-                {item.gallery.map((photo, index) => (
-                  <figure key={index} className="flex-none w-full snap-center sm:w-auto">
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img
-                        src={photo.image}
-                        alt={photo.caption ?? item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    {photo.caption ? (
-                      <figcaption className="mt-2 text-xs text-gray-400">{photo.caption}</figcaption>
-                    ) : null}
-                  </figure>
-                ))}
-              </div>
-            ) : null}
+            {item.gallery.length > 0 ? <CaseGallery photos={item.gallery} title={item.title} /> : null}
           </div>
         )}
       </div>
