@@ -41,7 +41,7 @@ export default function Contact() {
               </a>{" "}
               まで
             </p>
-            <p className="mt-1">受付時間：{company.businessHours}（{company.closedDays}）</p>
+            <p className="mt-1">受付時間：{company.businessHours}（{company.businessHoursNote}）</p>
           </div>
         </div>
       </section>

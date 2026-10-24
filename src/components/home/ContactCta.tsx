@@ -35,7 +35,7 @@ export default function ContactCta() {
               {company.tel}
             </a>
             <p className="text-xs text-white/60 mt-3">
-              受付時間：{company.businessHours}（{company.closedDays}）
+              受付時間：{company.businessHours}（{company.businessHoursNote}）
             </p>
           </div>
 

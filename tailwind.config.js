@@ -10,6 +10,7 @@ export default {
           dark: "#2a4d38",
         },
         accent: "#c8a96e",
+        navy: "#0f1f3d",
         warm: {
           50: "#faf8f5",
           100: "#f5f0e8",

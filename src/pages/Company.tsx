@@ -10,7 +10,7 @@ const rows: [string, string][] = [
   ["電話番号", company.tel],
   ["FAX", company.fax],
   ["Eメール", company.email],
-  ["営業時間", company.businessHours],
+  ["営業時間", `${company.businessHours}（${company.businessHoursNote}）`],
   ["定休日", company.closedDays],
   ["取扱工法", company.constructionMethod],
   ["参考坪単価", company.pricePerTsuboRange],

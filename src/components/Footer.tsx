@@ -30,7 +30,7 @@ const footerNav = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-dark text-gray-300">
+    <footer className="bg-navy text-gray-300">
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -40,7 +40,7 @@ export default function Footer() {
               <p className="text-white font-serif font-light text-xl tracking-widest">
                 {company.nameShort}
               </p>
-              <p className="text-gray-500 text-[10px] tracking-widest mt-1">
+              <p className="text-gray-400 text-[10px] tracking-widest mt-1">
                 HIZUME ARCHITECT OFFICE
               </p>
             </div>
@@ -66,7 +66,10 @@ export default function Footer() {
               </p>
             </address>
             <div className="mt-6 text-xs space-y-1">
-              <p>営業時間：{company.businessHours}</p>
+              <p>
+                営業時間：{company.businessHours}
+                <span className="whitespace-nowrap">（{company.businessHoursNote}）</span>
+              </p>
               <p>定休日：{company.closedDays}</p>
             </div>
 
@@ -121,8 +124,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
           <p>© {new Date().getFullYear()} {company.name} All rights reserved.</p>
         </div>
       </div>

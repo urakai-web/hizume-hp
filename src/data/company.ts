@@ -13,6 +13,8 @@ export const company = {
   /** HP経由のLINE友だち追加URL(流入元を区別するための計測付きリンク) */
   lineUrl: "https://line-harness.hizumejuutaku.workers.dev/r/HP",
   businessHours: "9:00〜18:00",
+  /** 営業時間の後ろに添える注記(「土・日・祝日」と書くと含むのか除くのか読み取りにくいため) */
+  businessHoursNote: "土日祝日は除く",
   closedDays: "土・日・祝日",
   serviceAreas: [
     "石川県全域",
