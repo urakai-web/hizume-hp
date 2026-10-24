@@ -40,14 +40,16 @@ export default function ContactCta() {
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 text-white flex flex-col items-center justify-center">
-            <p className="text-xs tracking-widest text-white/60 uppercase mb-3">Web Form</p>
+            <p className="text-xs tracking-widest text-white/60 uppercase mb-3">LINE</p>
             <p className="text-sm text-white/80 mb-6">24時間受付中。お気軽にどうぞ。</p>
-            <Link
-              to="/contact"
+            <a
+              href={company.lineUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-white text-primary-dark text-xs tracking-widest px-10 py-3 hover:bg-accent hover:text-white transition-colors duration-300"
             >
-              お問い合わせフォームへ
-            </Link>
+              LINEで相談する
+            </a>
           </div>
         </div>
 

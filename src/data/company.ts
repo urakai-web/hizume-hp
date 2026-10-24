@@ -10,6 +10,8 @@ export const company = {
   tel: "076-281-6024",
   fax: "076-281-6331",
   email: "hizume-studio@nifty.com",
+  /** HP経由のLINE友だち追加URL(流入元を区別するための計測付きリンク) */
+  lineUrl: "https://line-harness.hizumejuutaku.workers.dev/r/HP",
   businessHours: "9:00〜18:00",
   closedDays: "土・日・祝日",
   serviceAreas: [
