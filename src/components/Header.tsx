@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 const navItems = [
   { label: "私たちについて", href: "/concept" },
   { label: "新築の施工事例", href: "/case" },
+  { label: "非住宅の施工事例", href: "/case/nonresidential" },
   { label: "リフォーム", href: "/reform" },
   { label: "住宅設備", href: "/facilities" },
   { label: "お知らせ", href: "/news" },
@@ -54,12 +55,13 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-6">
           {navItems.map((item) => (
             <NavLink
               key={item.href}
               to={item.href}
-              className={`text-sm tracking-wide hover:text-primary transition-colors duration-300 ${
+              end
+              className={`whitespace-nowrap text-sm tracking-wide hover:text-primary transition-colors duration-300 ${
                 solid ? "text-gray-700" : "text-white"
               }`}
             >
@@ -68,7 +70,7 @@ export default function Header() {
           ))}
           <Link
             to="/contact"
-            className="text-sm tracking-widest bg-primary text-white px-6 py-2.5 hover:bg-primary-dark transition-colors duration-300"
+            className="whitespace-nowrap text-sm tracking-widest bg-primary text-white px-6 py-2.5 hover:bg-primary-dark transition-colors duration-300"
           >
             お問い合わせ
           </Link>
@@ -77,7 +79,7 @@ export default function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden flex flex-col gap-1.5 p-2"
+          className="xl:hidden flex flex-col gap-1.5 p-2"
           aria-label="メニューを開く"
         >
           <span
@@ -100,8 +102,10 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 bg-white ${
-          isMenuOpen ? "max-h-96 shadow-lg" : "max-h-0"
+        className={`xl:hidden transition-all duration-300 bg-white ${
+          isMenuOpen
+            ? "max-h-[75vh] overflow-y-auto shadow-lg"
+            : "max-h-0 overflow-hidden"
         }`}
       >
         <nav className="flex flex-col px-6 py-4 gap-4">
