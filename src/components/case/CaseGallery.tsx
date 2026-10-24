@@ -139,33 +139,27 @@ export default function CaseGallery({ photos: rawPhotos, title }: Props) {
         })}
       </div>
 
-      {/* スマホ: 1枚ずつスワイプ。縦長は高さに上限を付けて中央に表示 */}
+      {/* スマホ: 1枚ずつスワイプ。全て同じ大きさの正方形の枠に、切り取らず収める。
+          縦長でも横長でも枠の高さが変わらないので、スワイプしても上下に跳ねない */}
       <div className="sm:hidden mt-10">
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex items-center gap-3 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {photos.map((photo, index) => (
             <figure key={index} className="flex-none w-full snap-center">
               <button
                 type="button"
                 onClick={() => open(index)}
-                className="block w-full"
+                className="relative block aspect-square w-full bg-warm-100"
                 aria-label={`${photo.caption ?? title} を拡大して見る`}
               >
                 <img
                   src={photo.image}
                   alt={photo.caption ?? title}
-                  width={photo.width}
-                  height={photo.height}
                   loading="lazy"
-                  ref={(el) => {
-                    if (el?.complete) measure(index, el);
-                  }}
-                  onLoad={(e) => measure(index, e.currentTarget)}
-                  style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
-                  className="mx-auto block h-auto w-auto max-w-full max-h-[70vh]"
+                  className="absolute inset-0 h-full w-full object-contain"
                 />
               </button>
               <Caption text={photo.caption} />
