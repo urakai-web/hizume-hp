@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
-import { company } from "../../data/company";
-import { useFadeIn } from "../../hooks/useFadeIn";
+import { company } from "../data/company";
+import { useFadeIn } from "../hooks/useFadeIn";
 
-export default function ContactCta() {
+const DEFAULT_DESCRIPTION =
+  "新築のご相談から、中古物件のリフォーム、エアコン取付などの住宅設備工事まで。どんな小さなことでもお気軽にお問い合わせください。";
+
+type Props = {
+  /** ページごとの案内文。省略するとトップページ用の文言になる */
+  description?: string;
+};
+
+export default function ContactCta({ description = DEFAULT_DESCRIPTION }: Props) {
   const ref = useFadeIn<HTMLDivElement>();
 
   return (
@@ -20,9 +28,7 @@ export default function ContactCta() {
             <br />
             ご相談ください
           </h2>
-          <p className="text-white/80 text-sm leading-relaxed max-w-xl mx-auto">
-            新築のご相談から、中古物件のリフォーム、エアコン取付などの住宅設備工事まで。どんな小さなことでもお気軽にお問い合わせください。
-          </p>
+          <p className="text-white/80 text-sm leading-relaxed max-w-xl mx-auto">{description}</p>
         </div>
 
         <div className="fade-in-up mt-10 grid md:grid-cols-2 gap-6">

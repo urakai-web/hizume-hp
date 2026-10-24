@@ -1,3 +1,4 @@
+import ContactCta from "../components/ContactCta";
 import PageBanner from "../components/PageBanner";
 import { useFadeIn } from "../hooks/useFadeIn";
 
@@ -44,6 +45,8 @@ export default function Reform() {
           </ol>
         </div>
       </section>
+
+      <ContactCta description="中古物件のご購入前でも、現在お住まいの住宅の改修でも。リフォーム・リノベーションのご相談は、お気軽にどうぞ。" />
     </>
   );
 }

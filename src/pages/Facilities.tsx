@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import ContactCta from "../components/ContactCta";
 import PageBanner from "../components/PageBanner";
 import { useFadeIn } from "../hooks/useFadeIn";
 
@@ -36,14 +36,10 @@ export default function Facilities() {
               </li>
             ))}
           </ul>
-
-          <div className="mt-16 text-center">
-            <Link to="/contact" className="btn-primary text-xs inline-block">
-              住宅設備について相談する →
-            </Link>
-          </div>
         </div>
       </section>
+
+      <ContactCta description="エアコン取付をはじめ、家の設備に関することは幅広く承っています。「これも頼んでいいのかな？」という内容でも、お気軽にご相談ください。" />
     </>
   );
 }

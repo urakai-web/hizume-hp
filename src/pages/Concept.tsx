@@ -1,3 +1,4 @@
+import ContactCta from "../components/ContactCta";
 import PageBanner from "../components/PageBanner";
 import { useFadeIn } from "../hooks/useFadeIn";
 import { company } from "../data/company";
@@ -99,6 +100,8 @@ export default function Concept() {
           </div>
         </div>
       </section>
+
+      <ContactCta description="家づくりは、対話から始まります。土地のこと、暮らしのこと、まずはお気軽にお聞かせください。" />
     </>
   );
 }
