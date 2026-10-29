@@ -43,6 +43,7 @@ export default function ContactCta({ description = DEFAULT_DESCRIPTION }: Props)
             <p className="text-xs text-white/60 mt-3">
               受付時間：{company.businessHours}（{company.businessHoursNote}）
             </p>
+            <p className="text-xs text-white/60 mt-1">{company.meetingNote}</p>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 text-white flex flex-col items-center justify-center">

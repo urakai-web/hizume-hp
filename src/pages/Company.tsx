@@ -12,6 +12,7 @@ const rows: [string, string][] = [
   ["Eメール", company.email],
   ["営業時間", `${company.businessHours}（${company.businessHoursNote}）`],
   ["定休日", company.closedDays],
+  ["お打ち合わせ", company.meetingNote],
   ["取扱工法", company.constructionMethod],
   ["参考坪単価", company.pricePerTsuboRange],
   ["保証体制", company.warranty.join(" / ")],

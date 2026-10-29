@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -9,7 +9,6 @@ import CaseDetail from "./pages/CaseDetail";
 import NonResidentialCaseList from "./pages/NonResidentialCaseList";
 import NonResidentialCaseDetail from "./pages/NonResidentialCaseDetail";
 import Reform from "./pages/Reform";
-import Facilities from "./pages/Facilities";
 import Company from "./pages/Company";
 import EventList from "./pages/EventList";
 import EventDetail from "./pages/EventDetail";
@@ -31,7 +30,7 @@ export default function App() {
           <Route path="/case/nonresidential/:id" element={<NonResidentialCaseDetail />} />
           <Route path="/case/:id" element={<CaseDetail />} />
           <Route path="/reform" element={<Reform />} />
-          <Route path="/facilities" element={<Facilities />} />
+          <Route path="/facilities" element={<Navigate to="/reform" replace />} />
           <Route path="/company" element={<Company />} />
           <Route path="/events" element={<EventList />} />
           <Route path="/events/:id" element={<EventDetail />} />

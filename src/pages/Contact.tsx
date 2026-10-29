@@ -42,6 +42,7 @@ export default function Contact() {
               まで
             </p>
             <p className="mt-1">受付時間：{company.businessHours}（{company.businessHoursNote}）</p>
+            <p className="mt-1">{company.meetingNote}</p>
           </div>
         </div>
       </section>

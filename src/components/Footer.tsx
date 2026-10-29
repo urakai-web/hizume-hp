@@ -14,8 +14,7 @@ const footerNav = [
     heading: "事業案内",
     links: [
       { label: "新築の施工事例", href: "/case" },
-      { label: "リフォーム", href: "/reform" },
-      { label: "住宅設備・メンテナンス", href: "/facilities" },
+      { label: "リフォーム・住宅設備", href: "/reform" },
     ],
   },
   {
@@ -71,6 +70,7 @@ export default function Footer() {
                 <span className="whitespace-nowrap">（{company.businessHoursNote}）</span>
               </p>
               <p>定休日：{company.closedDays}</p>
+              <p>{company.meetingNote}</p>
             </div>
 
             {/* SNS */}
