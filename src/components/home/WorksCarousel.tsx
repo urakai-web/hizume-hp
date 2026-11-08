@@ -85,7 +85,7 @@ export default function WorksCarousel({ title, basePath, cases, emptyText }: Pro
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img
                     src={work.image}
-                    alt={work.title}
+                    alt={`${work.title}｜施工事例`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

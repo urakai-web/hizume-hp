@@ -8,6 +8,7 @@ const items = [
     description:
       "世界に二つとして同じ土地はありません。\nその土地の「特徴」を丁寧に読み取り、家の「特長」へと昇華していきます。",
     image: "/images/style/style-01.jpg",
+    alt: "オリーブの木が立つ中庭。ガラス越しに玄関とリビングが見える",
   },
   {
     icon: "💬",
@@ -16,6 +17,7 @@ const items = [
     description:
       "一軒の家が完成するまでに、打ち合わせの回数はおよそ40回。\n対話を重ねるほどに、あなたの未来の暮らしを形にしていきます。",
     image: "/images/style/style-02.jpg",
+    alt: "薪ストーブのある部屋で、図面を見ながら打ち合わせをする様子",
   },
   {
     icon: "🖋️",
@@ -23,6 +25,7 @@ const items = [
     subtitle: "Not a Product",
     description: "一人ひとり、その家族ごとにまったく異なる歩みと個性を映しながら、丁寧につくり上げていきます。",
     image: "/images/style/style-03.jpg",
+    alt: "木の格子越しに見える、石灯籠のある庭と、灯りがともる玄関",
   },
   {
     icon: "🔨",
@@ -30,6 +33,7 @@ const items = [
     subtitle: "Craftsmanship",
     description: "地元でも指折りの確かな腕を持つ職人たちと契約し、余裕を持って、細部にまでこだわった家づくりに取り組んでいます。",
     image: "/images/style/style-04.jpg",
+    alt: "造作の本棚と畳の小上がりがある、キッチン続きのリビング",
   },
 ];
 
@@ -63,7 +67,7 @@ export default function StyleSection() {
               <div className={`order-2 md:order-none ${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                 <div className="relative">
                   <div className="aspect-[4/3] overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                    <img src={item.image} alt={item.alt} className="w-full h-full object-cover" />
                   </div>
                   <div
                     className={`absolute -bottom-4 w-full h-full border-2 border-accent -z-10 ${

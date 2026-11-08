@@ -45,7 +45,7 @@ export default function CaseDetailView({ backPath, backLabel, notFoundText, item
             </p>
 
             <div className="mt-10 aspect-[16/10] overflow-hidden">
-              <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+              <img src={item.image} alt={`${item.title}｜施工事例`} className="w-full h-full object-cover" />
             </div>
 
             {item.body ? (

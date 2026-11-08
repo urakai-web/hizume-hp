@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CanonicalLink from "./components/CanonicalLink";
 import Top from "./pages/Top";
 import Concept from "./pages/Concept";
 import CaseList from "./pages/CaseList";
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <ScrollToTop />
+      <CanonicalLink />
       <Header />
       <main>
         <Routes>

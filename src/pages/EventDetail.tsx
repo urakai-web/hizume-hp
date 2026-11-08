@@ -1,3 +1,4 @@
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { Link, useParams } from "react-router-dom";
 import { useEvents } from "../hooks/useEvents";
 import { useFadeIn } from "../hooks/useFadeIn";
@@ -6,6 +7,7 @@ export default function EventDetail() {
   const { id } = useParams();
   const { events, loading } = useEvents();
   const item = events.find((e) => e.id === id);
+  useDocumentTitle(item?.title);
   const ref = useFadeIn<HTMLDivElement>();
 
   return (

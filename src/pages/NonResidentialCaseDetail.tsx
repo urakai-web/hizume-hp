@@ -1,3 +1,4 @@
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useParams } from "react-router-dom";
 import CaseDetailView from "../components/case/CaseDetailView";
 import { useNonResidentialCases } from "../hooks/useCases";
@@ -6,6 +7,7 @@ export default function NonResidentialCaseDetail() {
   const { id } = useParams();
   const { cases, loading } = useNonResidentialCases();
   const item = cases.find((c) => c.id === id);
+  useDocumentTitle(item?.title);
 
   return (
     <CaseDetailView

@@ -13,7 +13,7 @@ export default function ConceptTeaser() {
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src="/images/concept.jpg"
-                  alt="対話を重ねてつくる家づくり"
+                  alt="オークの床と造作の階段、ダイニングテーブルのある明るいリビングダイニング"
                   className="w-full h-full object-cover"
                 />
               </div>

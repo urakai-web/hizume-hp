@@ -8,21 +8,25 @@ const philosophyItems = [
     title: "変化を楽しむ",
     body: "家は竣工した時が完成ではありません。人とともに成熟し、過ごした歳月とともに馴染みながら愛着が深まっていく家が理想です。そのためできる限り自然素材を取り入れ、伝統的な工法を用いた家づくりを行っています。時を重ねることで存在感を放つ、経年変化を楽しめる住まいをつくります。",
     image: "/images/philosophy/philosophy-01.jpg",
+    alt: "造作の木製本棚と、縁なしの畳を敷いた明るい居間",
   },
   {
     title: "「シンプルかつ複雑」な家を",
     body: "空間はゆとりに満ちているが、無駄なものは一切ない。一見するとシンプルだが、細やかな気配りが随所に施された複雑な家。住むほどに、四季を迎えるたびに、新たな発見がある——そんな家を目指します。",
     image: "/images/philosophy/philosophy-02.jpg",
+    alt: "薪ストーブのある、木の質感を活かしたリビング",
   },
   {
     title: "楽しみながら見つめなおす",
     body: "家はたんに住むための場所ではなく、「私はこう住む・こう暮らす」という人生観の表現でもあります。その意味で家づくりは、自分の人生を確認する絶好のチャンスです。これからの人生に思いを馳せながら、出来上がっていくプロセスを楽しむ。そんな時間を共有できればと思います。",
     image: "/images/philosophy/philosophy-03.jpg",
+    alt: "オリーブの木を植えた中庭を囲む、玄関とリビング",
   },
   {
     title: "不易と流行",
     body: "新たな建築技術を柔軟に取り入れながらも、人にとっての“自然”を忘れない。時代に応じて変化していくことと、変えてはいけないもの、この二つをしっかりと見つめ、自然体でシンプルに暮らせる家づくりを心がけています。",
     image: "/images/philosophy/philosophy-04.jpg",
+    alt: "夕暮れに灯りがともる、瓦屋根の平屋の玄関",
   },
 ];
 
@@ -39,7 +43,7 @@ export default function Concept() {
             <div className="flex-none text-center">
               <img
                 src="/images/representative.jpg"
-                alt={company.representative}
+                alt={`代表取締役 ${company.representative}`}
                 className="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover mx-auto"
               />
               <p className="mt-4 text-sm text-gray-800">
@@ -77,7 +81,7 @@ export default function Concept() {
                 <div className={`order-2 md:order-none ${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                   <div className="relative">
                     <div className="aspect-[4/3] overflow-hidden">
-                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                      <img src={item.image} alt={item.alt} className="w-full h-full object-cover" />
                     </div>
                     <div
                       className={`absolute -bottom-4 w-full h-full border-2 border-accent -z-10 ${
